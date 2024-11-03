@@ -1,0 +1,63 @@
+/* General Styles */
+#number-plate-results {
+    padding: 30px; /* Added padding for consistency with main content */
+    background-color: #1b1b3a; /* Dark blue background to match the main page */
+    color: #ffffff; /* White text for readability */
+}
+
+/* Number Plate Item Styles */
+.number-plate-item {
+    background-color: #4a90e2; /* Match header/footer color */
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 5px;
+    padding: 20px; /* Increased padding for a better layout */
+    margin: 15px 0; /* Consistent margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effect */
+}
+
+.number-plate-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+.number-plate-item img {
+    max-width: 100%; /* Responsive image sizing */
+    border-radius: 5px; /* Rounded corners */
+    margin-bottom: 10px; /* Space below the image */
+}
+
+/* Number Plate Text */
+.number-plate-item h3 {
+    margin-top: 10px; /* Space above the title */
+    font-size: 1.2em; /* Font size for titles */
+    color: #ffffff; /* White text for readability */
+}
+
+/* Links */
+.number-plate-item a {
+    text-decoration: none; /* Remove underline from links */
+    color: #2980b9; /* Blue color for links */
+}
+
+.number-plate-item a:hover {
+    color: #ff6600; /* Bright orange on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #number-plate-results {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .number-plate-item {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .number-plate-item {
+        padding: 10px; /* Further reduce padding */
+        width: 100%; /* Full width on very small screens */
+    }
+}

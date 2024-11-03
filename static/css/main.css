@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #1b1b3a; /* Dark blue background */
+    color: #ffffff; /* Light text for readability */
+}
+
+header {
+    background-color: #4a90e2; /* Lighter blue for header */
+    color: #ffffff; /* White text for header */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow for header */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Content Styles */
+.content {
+    padding: 30px;
+}
+
+/* Feature Grid Styles */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Feature Box Styles */
+.feature-item {
+    background-color: #2c3e50; /* Darker background for feature items */
+    border: 1px solid #2980b9; /* Blue border to match header */
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.feature-item:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+.feature-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.feature-item h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #ffffff; /* White text for feature item titles */
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #2980b9; /* Blue links */
+}
+
+.feature-item a:hover {
+    color: #ff6600; /* Bright orange on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #4a90e2; /* Lighter blue for footer */
+    color: #ffffff; /* White text for footer */
+    padding: 15px;
+    font-size: 0.9em;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5); /* Shadow above footer */
+}
+
+/* Traffic Signal Colors */
+.success {
+    background-color: #4CAF50; /* Green for success messages */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.warning {
+    background-color: #ff9800; /* Orange for warnings */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.error {
+    background-color: #f44336; /* Red for errors */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Plate Detection Results</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <header>
+        <h1>Number Plate Detection</h1>
+    </header>
+
+    <section class="content">
+        <h2>Upload Video for Number Plate Detection</h2>
+        <form id="video-upload-form">
+            <input type="file" id="videoInput" accept="video/*" required>
+            <button type="submit">Upload and Detect</button>
+        </form>
+
+        <h2>Detection Results</h2>
+        <div id="number-plate-results"></div>
+    </section>
+
+    <script src="/static/js/video_processor.js"></script>
+    <script>
+        document.getElementById('video-upload-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const videoInput = document.getElementById('videoInput');
+            const file = videoInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('video', file);
+
+                // Send the video file to the server for processing
+                fetch('/process_number_plate_detection', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('number-plate-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (data.detected) {
+                resultsContainer.innerHTML = '<p>Number plates detected!</p>';
+                resultsContainer.innerHTML += `<p>Detected Plates: ${data.plates.join(', ')}</p>`;
+                // You can include additional details like detected plate numbers here
+            } else {
+                resultsContainer.innerHTML = '<p>No number plates detected.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

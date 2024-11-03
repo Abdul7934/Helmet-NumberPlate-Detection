@@ -1,0 +1,73 @@
+Helmet-NumberPlate-Speed-Detection/
+├── app/                                     # Core application folder
+│   ├── templates/                           # HTML templates
+│   │   ├── index.html                       # Main landing page
+│   │   ├── upload.html                      # Video upload page
+│   │   ├── helmet_detection.html            # Helmet detection page
+│   │   ├── number_plate_detection.html      # Number plate detection page
+│   │   ├── speed_detection.html             # Speed detection page
+│   │   ├── alert_violation.html             # Traffic violations alert page
+│   │   ├── analytics.html                   # Analytics dashboard page
+│   │   ├── vehicle_tracking.html            # Vehicle tracking and mapping page
+│   │   └── occupancy_detection.html         # Occupancy detection page
+│   ├── static/                              # Static assets
+│   │   ├── css/
+│   │   │   ├── main.css                     # Main stylesheet
+│   │   │   ├── helmet_detection.css         # Helmet detection styles
+│   │   │   ├── number_plate.css             # Number plate styles
+│   │   │   ├── speed_detection.css          # Speed detection styles
+│   │   ├── js/
+│   │   │   ├── video_processor.js           # Handles video input and processing
+│   │   │   ├── alert_violation.js           # Script for alerts and notifications
+│   │   │   ├── analytics.js                 # Dashboard analytics
+│   │   └── images/                          # Any static images
+│   ├── modules/                             # Feature-specific modules
+│   │   ├── helmet_detection.py              # Helmet detection model and functions
+│   │   ├── number_plate_detection.py        # Number plate recognition and OCR
+│   │   ├── speed_detection.py               # Speed calculation functions
+│   │   ├── occupancy_detection.py           # Occupancy (number of occupants) detection
+│   │   ├── vehicle_classification.py        # Vehicle type classification
+│   │   ├── vehicle_classification.py                   # Geo-mapping and real-time location
+│   │   ├── incident_detection.py            # Incident detection and video clipping
+│   │   ├── traffic_flow_analysis.py         # Traffic flow and congestion analysis
+│   │   ├── driver_behavior.py               # Detects aggressive driving behavior
+│   │   ├── alerts_notifications.py          # Alerts and notifications (e.g., Twilio integration)
+│   │   ├── database_handler.py              # Database handler for license plates and owner data
+│   │   ├── dashboard_analytics.py           # Functions for generating analytics and charts
+│   ├── utils/
+│   │   ├── preprocessor.py                  # Pre-processes video for better detection
+│   │   ├── constants.py                     # Holds constants for thresholds, settings, etc.
+│   │   └── helper.py                        # Utility functions for shared tasks
+│   ├── routes/                              # Flask routes for each page and API endpoint
+│   │   ├── index.py                         # Route for main page and video upload
+│   │   ├── helmet_route.py                  # Helmet detection route
+│   │   ├── number_plate_route.py            # Number plate detection route
+│   │   ├── speed_route.py                   # Speed detection route
+│   │   ├── violation_alert_route.py         # Traffic violation alerts route
+│   │   ├── analytics_route.py               # Analytics dashboard route
+│   │   ├── tracking_route.py                # Vehicle tracking and mapping route
+│   │   └── occupancy_route.py               # Occupancy detection route
+│   ├── config.py                            # Configuration settings (e.g., thresholds, API keys)
+│   ├── app.py                               # Main Flask app file, initializes app and routes
+│   ├── models/                              # Machine learning and deep learning models
+│   │   ├── helmet_detection_model.h5        # Helmet detection model
+│   │   ├── number_plate_recognition_model.h5 # Number plate recognition model
+│   │   ├── speed_detection_model.h5         # Speed detection model
+│   │   └── occupancy_detection_model.h5     # Occupancy detection model
+├── database/                                # Database-related files
+│   ├── license_plate_data.db                # Database for license plates and owner information
+│   ├── migrations/                          # Migrations for database changes
+│   └── db_setup.py                          # Script for setting up the initial database
+├── logs/                                    # Logs for tracking issues and errors
+│   ├── app.log                              # Log file for the main application
+│   ├── helmet_detection.log                 # Log file for helmet detection module
+│   ├── speed_detection.log                  # Log file for speed detection module
+├── tests/                                   # Tests for the application
+│   ├── test_helmet_detection.py             # Unit tests for helmet detection
+│   ├── test_number_plate_detection.py       # Unit tests for number plate detection
+│   ├── test_speed_detection.py              # Unit tests for speed detection
+│   ├── test_alerts_notifications.py         # Unit tests for alerts and notifications
+│   └── integration_test.py                  # Integration tests for multi-module functionality
+├── requirements.txt                         # Python dependencies
+├── README.md                                # Project overview and setup instructions
+└── setup.sh                                 # Setup script for initializing the environment

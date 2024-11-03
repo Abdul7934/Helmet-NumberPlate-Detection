@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Violation Detection Results</title>
+    <link rel="stylesheet" href="/static/css/alert_violation.css">
+</head>
+<body>
+    <header>
+        <h1>Traffic Violation Detection</h1>
+    </header>
+
+    <section class="content">
+        <h2>Upload Video for Traffic Violation Detection</h2>
+        <form id="video-upload-form">
+            <input type="file" id="videoInput" accept="video/*" required>
+            <button type="submit">Upload and Detect</button>
+        </form>
+
+        <h2>Detection Results</h2>
+        <div id="violation-results"></div>
+    </section>
+
+    <script src="/static/js/video_processor.js"></script>
+    <script>
+        document.getElementById('video-upload-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const videoInput = document.getElementById('videoInput');
+            const file = videoInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('video', file);
+
+                // Send the video file to the server for processing
+                fetch('/process_traffic_violation_detection', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('violation-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (data.violations.length > 0) {
+                resultsContainer.innerHTML = '<h3>Violations Detected:</h3>';
+                data.violations.forEach(violation => {
+                    resultsContainer.innerHTML += `<p>${violation}</p>`;
+                });
+            } else {
+                resultsContainer.innerHTML = '<p>No traffic violations detected.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

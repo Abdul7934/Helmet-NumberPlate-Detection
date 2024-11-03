@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Detection Results</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <header>
+        <h1>Analytics Detection</h1>
+    </header>
+
+    <section class="content">
+        <h2>Upload Video for Analytics Detection</h2>
+        <form id="video-upload-form">
+            <input type="file" id="videoInput" accept="video/*" required>
+            <button type="submit">Upload and Analyze</button>
+        </form>
+
+        <h2>Detection Results</h2>
+        <div id="analytics-results"></div>
+    </section>
+
+    <script src="/static/js/video_processor.js"></script>
+    <script>
+        document.getElementById('video-upload-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const videoInput = document.getElementById('videoInput');
+            const file = videoInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('video', file);
+
+                // Send the video file to the server for processing
+                fetch('/process_analytics_detection', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('analytics-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (data.vehicles_detected > 0) {
+                resultsContainer.innerHTML = `
+                    <p>Total Vehicles Detected: ${data.vehicles_detected}</p>
+                    <p>Average Speed: ${data.average_speed} km/h</p>
+                    <p>Speed Violations: ${data.speed_violations}</p>
+                `;
+            } else {
+                resultsContainer.innerHTML = '<p>No vehicles detected.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

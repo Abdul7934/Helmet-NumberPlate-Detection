@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Tracking Results</title>
+    <link rel="stylesheet" href="/static/css/vehicle_tracking.css">
+</head>
+<body>
+    <header>
+        <h1>Vehicle Tracking</h1>
+    </header>
+
+    <section class="content">
+        <h2>Upload Video for Vehicle Tracking</h2>
+        <form id="video-upload-form">
+            <input type="file" id="videoInput" accept="video/*" required>
+            <button type="submit">Upload and Track</button>
+        </form>
+
+        <h2>Detection Results</h2>
+        <div id="vehicle-results"></div>
+    </section>
+
+    <script src="/static/js/video_processor.js"></script>
+    <script>
+        document.getElementById('video-upload-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const videoInput = document.getElementById('videoInput');
+            const file = videoInput.files[0];
+
+            if (file) {
+                const formData = new FormData();
+                formData.append('video', file);
+
+                // Send the video file to the server for processing
+                fetch('/process_vehicle_tracking', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+        });
+
+        function displayResults(data) {
+            const resultsContainer = document.getElementById('vehicle-results');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (data.detected) {
+                resultsContainer.innerHTML = '<p>Vehicles detected!</p>';
+                // You can also include additional details such as the number plates
+                data.vehicles.forEach(vehicle => {
+                    resultsContainer.innerHTML += `<p>Vehicle Number: ${vehicle.license_plate}, Speed: ${vehicle.speed} km/h</p>`;
+                });
+            } else {
+                resultsContainer.innerHTML = '<p>No vehicles detected.</p>';
+            }
+        }
+    </script>
+</body>
+</html>

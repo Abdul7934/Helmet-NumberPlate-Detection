@@ -1,0 +1,106 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #1b1b3a; /* Dark blue background */
+    color: #ffffff; /* Light text for readability */
+}
+
+header {
+    background-color: #4a90e2; /* Lighter blue for header */
+    color: #ffffff; /* White text for header */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker shadow for header */
+}
+
+h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Speed Detection Results Styles */
+#speed-results {
+    background-color: #2c3e50; /* Darker background to match feature items */
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#speed-results:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+.speed-item {
+    margin: 15px 0;
+    background-color: #4a90e2; /* Match header/footer color */
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff; /* White text for better readability */
+}
+
+.speed-item span {
+    font-weight: bold;
+    font-size: 1.2em; /* Slightly larger text for emphasis */
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #2980b9; /* Blue links */
+}
+
+a:hover {
+    color: #ff6600; /* Bright orange on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #4a90e2; /* Lighter blue for footer */
+    color: #ffffff; /* White text for footer */
+    padding: 15px;
+    font-size: 0.9em;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5); /* Shadow above footer */
+}
+
+/* Traffic Signal Colors */
+.success {
+    background-color: #4CAF50; /* Green for success messages */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.warning {
+    background-color: #ff9800; /* Orange for warnings */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.error {
+    background-color: #f44336; /* Red for errors */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    /* Adjustments for medium screens */
+    #speed-results {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjustments for small screens */
+    #speed-results {
+        padding: 10px; /* Further reduce padding */
+    }
+}
